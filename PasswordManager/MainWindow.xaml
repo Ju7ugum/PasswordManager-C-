@@ -1,0 +1,83 @@
+﻿<Window x:Class="PasswordManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Password Manager" Height="500" Width="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Заголовок -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поля ввода -->
+            <RowDefinition Height="Auto"/>
+            <!-- Параметры генерации -->
+            <RowDefinition Height="Auto"/>
+            <!-- Поля длины и кнопки -->
+            <RowDefinition Height="*"/>
+            <!-- Запасное пространство -->
+            <RowDefinition Height="Auto"/>
+            <!-- Подпись -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <!-- Поля ввода и текст -->
+            <ColumnDefinition Width="Auto"/>
+            <!-- Кнопки -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Password Manager"
+                   FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Поля ввода -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,20,0">
+            <TextBlock Text="Название записи" Margin="0,5"/>
+            <TextBox Name="RecordTitle" Width="250" Height="30" Margin="0,5"/>
+
+            <TextBlock Text="Имя пользователя" Margin="0,5"/>
+            <TextBox Name="RecordUsername" Width="250" Height="30" Margin="0,5"/>
+        </StackPanel>
+
+        <!-- Кнопки генерации -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Top">
+            <Button Content="Сгенерировать пароль" Width="150" Height="30" Margin="0,5" Click="GeneratePassword_Click"/>
+            <Button Content="Сгенерировать ключ" Width="150" Height="30" Margin="0,5" Click="GenerateKeyButton_Click"/>
+        </StackPanel>
+
+        <!-- Параметры генерации -->
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,10">
+            <TextBlock Text="Параметры генерации пароля:" FontWeight="Bold" Margin="0,10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5">
+                <CheckBox Name="IncludeUppercase" Content="Заглавные буквы" Margin="5,0"/>
+                <CheckBox Name="IncludeLowercase" Content="Строчные буквы" Margin="5,0"/>
+                <CheckBox Name="IncludeNumbers" Content="Цифры" Margin="5,0"/>
+                <CheckBox Name="IncludeSymbols" Content="Символы" Margin="5,0"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Поля для ввода длины пароля -->
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,10">
+            <TextBlock Text="Длина пароля:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Name="PasswordLength" Width="50" Height="30" Margin="0,0,10,0"/>
+        </StackPanel>
+
+        <!-- Поля для пароля и ключа -->
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,10">
+            <TextBlock Text="Сгенерированный пароль" Margin="0,5"/>
+            <TextBox Name="GeneratedPasswordTextBox" Width="400" Height="30" Margin="0,5" IsReadOnly="True"/>
+
+            <TextBlock Text="Сгенерированный ключ" Margin="0,5"/>
+            <TextBox Name="GeneratedKeyTextBox" Width="400" Height="30" Margin="0,5" IsReadOnly="True"/>
+        </StackPanel>
+
+        <!-- Кнопка сохранения -->
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Сохранить запись" Width="200" Height="40" 
+                HorizontalAlignment="Center" VerticalAlignment="Top" Click="SaveRecord_Click" Margin="0,20"/>
+
+        <!-- Подпись -->
+        <TextBlock Grid.Row="5" Grid.ColumnSpan="2" Text="Developed by Ju7ugum"
+                   FontSize="12" Foreground="Gray" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,10"/>
+    </Grid>
+</Window>
